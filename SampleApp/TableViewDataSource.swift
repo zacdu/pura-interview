@@ -46,7 +46,7 @@ extension TableViewDataSource: UITableViewDataSource {
         cell.wordTitleLabel.text = "\(word.text):"
         var definitionString = ""
         for (i, def) in word.definitions.enumerated() {
-            let newLineString = (i == word.definitions.endIndex - 1) ? "" : "\n\n" // if we're on the last definition, we don't include a newline, to save space per each cell.
+            let newLineString = (i == word.definitions.endIndex - 1) ? "" : "\n\n" // if we're on the last definition, we don't include newlines, to save space per each cell.
             definitionString += "\u{2022} \(def).\(newLineString)"
         }
         cell.wordDefinitionLabel.text = definitionString.isEmpty ? "N/A" : definitionString
@@ -54,7 +54,7 @@ extension TableViewDataSource: UITableViewDataSource {
         for stem in word.stems {
             stemString += "\(stem) \\ "
         }
-        cell.taglineLabel.text = stemString
+        cell.taglineLabel.text = stemString.isEmpty ? "N/A" : stemString
 
         return cell
     }

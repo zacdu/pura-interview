@@ -19,7 +19,6 @@ struct WordResponse: Codable {
     static func parseData(_ data: Data) -> [WordResponse]? {
         do {
             let response = try JSONDecoder().decode([WordResponse].self, from: data)
-            //print(response)
             return response
         } catch {
             print("WORD RESPONSE ERROR: ", error.localizedDescription)
