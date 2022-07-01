@@ -7,6 +7,17 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="EBGaramond-Regular.ttf">
+            <string>EBGaramond</string>
+        </array>
+        <array key="Quicksand-Italic.ttf">
+            <string>Quicksand-Italic</string>
+        </array>
+        <array key="Quicksand-Regular.ttf">
+            <string>Quicksand-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -32,6 +43,75 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LUm-hP-4Wq">
                                 <rect key="frame" x="25" y="159" width="364" height="703"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="wordCell" rowHeight="214" id="Cjt-hB-kRc" customClass="WordTableViewCell" customModule="SampleApp">
+                                        <rect key="frame" x="0.0" y="44.5" width="364" height="214"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cjt-hB-kRc" id="Y4g-Mu-SGG">
+                                            <rect key="frame" x="0.0" y="0.0" width="364" height="214"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMG-ca-mIU">
+                                                    <rect key="frame" x="38" y="11" width="288" height="187"/>
+                                                    <subviews>
+                                                        <label userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="WordTitleLabel" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DiZ-O7-Vc3">
+                                                            <rect key="frame" x="8" y="8" width="147" height="26"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                        </label>
+                                                        <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="150" text="WordDefinitionLabel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.85000002384185791" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WIQ-zk-Jdz">
+                                                            <rect key="frame" x="8" y="110" width="272" height="69"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="69" id="W2w-ru-rhN"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="EBGaramond" family="EB Garamond" pointSize="14"/>
+                                                            <color key="textColor" red="0.21736199240000001" green="0.21736199240000001" blue="0.21736199240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KFb-1G-ACG" userLabel="tagLine Label">
+                                                            <rect key="frame" x="8" y="41.5" width="23" height="16.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="Quicksand-Italic" family="Quicksand" pointSize="14"/>
+                                                            <color key="textColor" red="0.82352941180000006" green="0.027450980390000001" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="WIQ-zk-Jdz" secondAttribute="bottom" constant="8" id="6EH-5y-NNS"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KFb-1G-ACG" secondAttribute="trailing" constant="20" symbolic="YES" id="9xx-lW-g4V"/>
+                                                        <constraint firstItem="DiZ-O7-Vc3" firstAttribute="top" secondItem="rMG-ca-mIU" secondAttribute="top" constant="8" id="AYi-Sy-Au9"/>
+                                                        <constraint firstAttribute="trailing" secondItem="WIQ-zk-Jdz" secondAttribute="trailing" constant="8" id="GTy-B0-ffa"/>
+                                                        <constraint firstItem="WIQ-zk-Jdz" firstAttribute="leading" secondItem="rMG-ca-mIU" secondAttribute="leading" constant="8" id="KUG-gh-rt2"/>
+                                                        <constraint firstItem="DiZ-O7-Vc3" firstAttribute="leading" secondItem="rMG-ca-mIU" secondAttribute="leading" constant="8" id="PUg-bV-cG3"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DiZ-O7-Vc3" secondAttribute="trailing" constant="20" symbolic="YES" id="QTq-f8-mr8"/>
+                                                        <constraint firstItem="KFb-1G-ACG" firstAttribute="width" relation="lessThanOrEqual" secondItem="rMG-ca-mIU" secondAttribute="width" multiplier="0.95" id="cow-3X-LQ7"/>
+                                                        <constraint firstItem="KFb-1G-ACG" firstAttribute="leading" secondItem="rMG-ca-mIU" secondAttribute="leading" constant="8" id="ero-NO-D9H"/>
+                                                        <constraint firstItem="KFb-1G-ACG" firstAttribute="top" secondItem="DiZ-O7-Vc3" secondAttribute="bottom" constant="7.5" id="gFZ-nQ-Une"/>
+                                                        <constraint firstItem="WIQ-zk-Jdz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KFb-1G-ACG" secondAttribute="bottom" constant="5" id="sd2-ec-gKM"/>
+                                                        <constraint firstItem="DiZ-O7-Vc3" firstAttribute="width" relation="lessThanOrEqual" secondItem="rMG-ca-mIU" secondAttribute="width" multiplier="0.9" id="xM8-O5-E40"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="rMG-ca-mIU" secondAttribute="trailing" constant="18" id="6HS-Ev-coV"/>
+                                                <constraint firstItem="rMG-ca-mIU" firstAttribute="top" secondItem="Y4g-Mu-SGG" secondAttribute="topMargin" id="F1Z-eZ-wjq"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="rMG-ca-mIU" secondAttribute="bottom" constant="5" id="q3R-EV-f1B"/>
+                                                <constraint firstItem="rMG-ca-mIU" firstAttribute="leading" secondItem="Y4g-Mu-SGG" secondAttribute="leadingMargin" constant="18" id="tfa-C8-Zfo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="taglineLabel" destination="KFb-1G-ACG" id="Upl-IO-S2c"/>
+                                            <outlet property="wordDefinitionLabel" destination="WIQ-zk-Jdz" id="OdL-wI-tMv"/>
+                                            <outlet property="wordTitleLabel" destination="DiZ-O7-Vc3" id="slc-ew-aea"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

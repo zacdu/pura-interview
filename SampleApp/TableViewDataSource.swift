@@ -34,23 +34,17 @@ extension TableViewDataSource: UITableViewDataSource {
         guard case let State.word(word) = state  else {
             return 0
         }
-        return word.definitions.count + 1
+        return word.definitions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard case let State.word(word) = state  else {
             return UITableViewCell()
         }
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
-        cell.selectionStyle = .none
+        let cell: WordTableViewCell = tableView.dequeueReusableCell(withIdentifier: "wordCell", for: indexPath) as? WordTableViewCell ?? WordTableViewCell()
         
-        if indexPath.row == 0 {
-            cell.textLabel?.text = "word:"
-            cell.detailTextLabel?.text = word.text
-        } else {
-            cell.textLabel?.text = "definition:"
-            cell.detailTextLabel?.text = word.definitions[indexPath.row - 1]
-        }
+        cell.wordTitleLabel.text = word.text
+        cell.wordDefinitionLabel.text = word.definitions[indexPath.row]
         return cell
     }
 }

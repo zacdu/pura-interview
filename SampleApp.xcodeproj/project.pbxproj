@@ -24,6 +24,7 @@
 		06A89838286C0FFC00F773B5 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A89837286C0FFC00F773B5 /* TableViewDataSource.swift */; };
 		06A8983A286C165A00F773B5 /* WordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A89839286C165A00F773B5 /* WordResponse.swift */; };
 		06A8983C286C168800F773B5 /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A8983B286C168800F773B5 /* Meta.swift */; };
+		11A8491F286F58FB00BBAB63 /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A8491E286F58FB00BBAB63 /* WordTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		06A89837286C0FFC00F773B5 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		06A89839286C165A00F773B5 /* WordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordResponse.swift; sourceTree = "<group>"; };
 		06A8983B286C168800F773B5 /* Meta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
+		11A8491E286F58FB00BBAB63 /* WordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				06A897FD286BEBA500F773B5 /* ViewController.swift */,
 				06A897FF286BEBA500F773B5 /* Main.storyboard */,
 				06A89837286C0FFC00F773B5 /* TableViewDataSource.swift */,
+				11A8491E286F58FB00BBAB63 /* WordTableViewCell.swift */,
 				062E352E286CC5950072B38E /* API */,
 				062E352F286CC5B10072B38E /* Model */,
 				06A89802286BEBA600F773B5 /* Assets.xcassets */,
@@ -299,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06A8983A286C165A00F773B5 /* WordResponse.swift in Sources */,
+				11A8491F286F58FB00BBAB63 /* WordTableViewCell.swift in Sources */,
 				06A897FE286BEBA500F773B5 /* ViewController.swift in Sources */,
 				06A897FA286BEBA500F773B5 /* AppDelegate.swift in Sources */,
 				06A89836286C071200F773B5 /* URLBuilder.swift in Sources */,
@@ -485,7 +489,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TB5A2AZLGA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SampleApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -513,7 +517,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TB5A2AZLGA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SampleApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
