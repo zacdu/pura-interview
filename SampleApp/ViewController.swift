@@ -26,8 +26,11 @@ class ViewController: UIViewController {
                 guard let r = WordResponse.parseData(data) else {
                     return
                 }
-                
-                self.dataSource.updateState(.word(r.word)) {
+                var words: [Word] = []
+                for response in r {
+                    words.append(response.word)
+                }
+                self.dataSource.updateState(.words(words)) {
                     self.tableView.reloadData()
                 }
                 

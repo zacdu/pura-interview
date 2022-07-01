@@ -13,7 +13,7 @@ class TableViewDataSource: NSObject {
     
     enum State {
         case empty
-        case word(Word)
+        case words([Word])
     }
 
     var state: State
@@ -31,29 +31,31 @@ class TableViewDataSource: NSObject {
 
 extension TableViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard case let State.word(word) = state  else {
+        guard case let State.words(words) = state  else {
             return 0
         }
-        return word.definitions.count
+        return words.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard case let State.word(word) = state  else {
+        guard case let State.words(words) = state  else {
             return UITableViewCell()
         }
         let cell: WordTableViewCell = tableView.dequeueReusableCell(withIdentifier: "wordCell", for: indexPath) as? WordTableViewCell ?? WordTableViewCell()
-        
-        cell.wordTitleLabel.text = word.text
+        let word = words[indexPath.row]
+        cell.wordTitleLabel.text = "\(word.text):"
         var definitionString = ""
-        for def in word.definitions {
-            definitionString += "- \(def);\n\n"
+        for (i, def) in word.definitions.enumerated() {
+            let newLineString = (i == word.definitions.endIndex - 1) ? "" : "\n\n" // if we're on the last definition, we don't include a newline, to save space per each cell.
+            definitionString += "\u{2022} \(def).\(newLineString)"
         }
-        cell.wordDefinitionLabel.text = definitionString
+        cell.wordDefinitionLabel.text = definitionString.isEmpty ? "N/A" : definitionString
         var stemString = ""
         for stem in word.stems {
-            stemString += " \(stem)"
+            stemString += "\(stem) \\ "
         }
         cell.taglineLabel.text = stemString
+
         return cell
     }
 }
