@@ -8,10 +8,10 @@
 import Foundation
 
 
-enum APIError: Error {
+enum APIError: Error, Equatable {
     case badURL
     case custom(String)
     case noData
     case emptyQuery
-    case tooShort(String)
+    case tooShort
 }

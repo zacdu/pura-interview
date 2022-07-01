@@ -17,7 +17,10 @@ class ViewController: UIViewController {
     
     @IBAction func didTapButton() {
         guard let text = textField.text, !text.isEmpty else {
-            textField.shake(duration: 0.08, autoReverse: true, repeatCount: 5)
+            self.dataSource.updateState(.empty, error: APIError.emptyQuery) {
+                self.textField.shake(duration: 0.08, autoReverse: true, repeatCount: 5)
+                self.tableView.reloadData()
+            }
             return
         }
         
@@ -36,7 +39,7 @@ class ViewController: UIViewController {
                 }
                 
             case .failure(let error):
-                self.dataSource.updateState(.empty) {
+                self.dataSource.updateState(.empty, error: error) {
                     self.textField.shake(duration: 0.05, autoReverse: true, repeatCount: 3)
                     self.tableView.reloadData()
                 }
@@ -59,9 +62,5 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if case TableViewDataSource.State.empty = dataSource.state  {
-            CellAnimation.shared.cellAnimation(cell: cell, duration: 5.0, delay: 1.5, springDampening: 0.8, animationOptions: [.allowUserInteraction, .curveEaseIn], tx: 0, ty: 20, scaleX: 0.7, scaleY: 0.7)
-        }
-    }
+
 }

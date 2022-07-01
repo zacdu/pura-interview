@@ -20,11 +20,10 @@ class API: NSObject {
             return
         }
         
-        guard query.count > 2 else {
-            completion(.failure(.tooShort(query)))
+        guard query.count > 1 else { // Single character entries we can skip, but there are plenty of two-letter words we want to allow
+            completion(.failure(.tooShort))
             return
         }
-        
         
         let requestURL = URLBuilder(baseURL: API.baseThesaurusUrl, word: query.lowercased()).thesaurusRequestURL
         
@@ -32,7 +31,7 @@ class API: NSObject {
             completion(.failure(.badURL))
             return
         }
-        
+
         let request = URLRequest(url: url)
         
         print("Fetching from: ", request.url?.absoluteString ?? "")
@@ -48,42 +47,8 @@ class API: NSObject {
             }
             completion(.success(data))
             
-
         }.resume()
         
-    }
-    
-    // TODO: May not need this, we can get everything we need with one call to an endpoint
-    func fetchThesaurus(forWord query: String, _ completion: @escaping (Result<Data, APIError>) -> Void) {
-        guard !query.isEmpty else {
-            completion(.failure(.emptyQuery))
-            return
-        }
-        
-        let requestURL = URLBuilder(baseURL: API.baseThesaurusUrl, word: query.lowercased()).thesaurusRequestURL
-        
-        guard let url = URL(string: requestURL) else {
-            completion(.failure(.badURL))
-            return
-        }
-        let request = URLRequest(url: url)
-        print("Fetching from: ", request.url?.absoluteString ?? "")
-        
-        
-        session.dataTask(with: request) { data, response, error in
-            if let error = error {
-                completion(.failure(.custom(error.localizedDescription)))
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(.noData))
-                return
-            }
-            completion(.success(data))
-            
-
-        }.resume()
     }
     
 }
