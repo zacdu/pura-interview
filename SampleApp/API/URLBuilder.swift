@@ -12,8 +12,13 @@ struct URLBuilder {
     var baseURL: String
     var word: String
 
-    var requestURL: String {
+    var searchRequestURL: String {
         let url = baseURL + word + "?key=" + Tokens.apiKeyDict
+        return url
+    }
+    
+    var thesaurusRequestURL: String {
+        let url = baseURL + word + "?key=" + Tokens.apiKeyThes
         return url
     }
 }

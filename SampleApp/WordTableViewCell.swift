@@ -12,4 +12,6 @@ class WordTableViewCell: UITableViewCell {
     @IBOutlet weak var wordTitleLabel: UILabel!
     @IBOutlet weak var wordDefinitionLabel: UILabel!
     @IBOutlet weak var taglineLabel: UILabel!
+    @IBOutlet weak var flLabel: UILabel!
+    @IBOutlet weak var wordSynLabel: UILabel!
 }

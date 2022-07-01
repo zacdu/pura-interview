@@ -12,4 +12,6 @@ struct Word: Codable {
     var text: String
     var definitions: [String]
     var stems: [String]
+    var syns: [Array<String>]
+    let fl: String
 }

@@ -11,7 +11,8 @@ class API: NSObject {
     static let shared = API()
     let session = URLSession.shared
     
-    static let baseUrl = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/"
+    static let baseSearchUrl = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/"
+    static let baseThesaurusUrl = "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/"
     
     func fetchWord(query: String, _ completion: @escaping (Result<Data, APIError>) -> Void) {
         guard !query.isEmpty else {
@@ -25,7 +26,7 @@ class API: NSObject {
         }
         
         
-        let requestURL = URLBuilder(baseURL: API.baseUrl, word: query.lowercased()).requestURL
+        let requestURL = URLBuilder(baseURL: API.baseThesaurusUrl, word: query.lowercased()).thesaurusRequestURL
         
         guard let url = URL(string: requestURL) else {
             completion(.failure(.badURL))
@@ -50,6 +51,39 @@ class API: NSObject {
 
         }.resume()
         
+    }
+    
+    // TODO: May not need this, we can get everything we need with one call to an endpoint
+    func fetchThesaurus(forWord query: String, _ completion: @escaping (Result<Data, APIError>) -> Void) {
+        guard !query.isEmpty else {
+            completion(.failure(.emptyQuery))
+            return
+        }
+        
+        let requestURL = URLBuilder(baseURL: API.baseThesaurusUrl, word: query.lowercased()).thesaurusRequestURL
+        
+        guard let url = URL(string: requestURL) else {
+            completion(.failure(.badURL))
+            return
+        }
+        let request = URLRequest(url: url)
+        print("Fetching from: ", request.url?.absoluteString ?? "")
+        
+        
+        session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(.custom(error.localizedDescription)))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
+            }
+            completion(.success(data))
+            
+
+        }.resume()
     }
     
 }

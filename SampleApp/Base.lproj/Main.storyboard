@@ -41,26 +41,39 @@
                                 <rect key="frame" x="25" y="159" width="364" height="703"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="wordCell" rowHeight="214" id="Cjt-hB-kRc" customClass="WordTableViewCell" customModule="SampleApp">
-                                        <rect key="frame" x="0.0" y="44.5" width="364" height="214"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="wordCell" rowHeight="250" id="Cjt-hB-kRc" customClass="WordTableViewCell" customModule="SampleApp">
+                                        <rect key="frame" x="0.0" y="44.5" width="364" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cjt-hB-kRc" id="Y4g-Mu-SGG">
-                                            <rect key="frame" x="0.0" y="0.0" width="364" height="214"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="364" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMG-ca-mIU">
-                                                    <rect key="frame" x="20" y="11" width="306" height="187"/>
+                                                    <rect key="frame" x="20" y="11" width="306" height="223"/>
                                                     <subviews>
                                                         <label userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="WordTitleLabel" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DiZ-O7-Vc3">
-                                                            <rect key="frame" x="0.0" y="8" width="147" height="26"/>
+                                                            <rect key="frame" x="0.0" y="8" width="133.5" height="26"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="26" id="TRG-JQ-KXM"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                                         </label>
+                                                        <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KFb-1G-ACG" userLabel="tagLine Label">
+                                                            <rect key="frame" x="8" y="41.5" width="23" height="16.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="16.5" id="oTt-Nb-hpB"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Quicksand-Italic" family="Quicksand" pointSize="14"/>
+                                                            <color key="textColor" red="0.23253774639999999" green="0.36784169080000001" blue="0.46866512300000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="150" text="WordDefinitionLabel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.85000002384185791" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WIQ-zk-Jdz">
-                                                            <rect key="frame" x="8" y="110" width="290" height="69"/>
+                                                            <rect key="frame" x="8" y="146" width="290" height="69"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="69" id="W2w-ru-rhN"/>
@@ -69,12 +82,13 @@
                                                             <color key="textColor" red="0.21736199240000001" green="0.21736199240000001" blue="0.21736199240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KFb-1G-ACG" userLabel="tagLine Label">
-                                                            <rect key="frame" x="8" y="41.5" width="23" height="16.5"/>
+                                                        <label userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="flLabel" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nQO-h0-zZY">
+                                                            <rect key="frame" x="135.5" y="12.5" width="48.5" height="19.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <fontDescription key="fontDescription" name="Quicksand-Italic" family="Quicksand" pointSize="14"/>
-                                                            <color key="textColor" red="0.82352941180000006" green="0.027450980390000001" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
+                                                            <color key="textColor" red="0.23253774639999999" green="0.36784169080000001" blue="0.46866512300000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
+                                                            <size key="shadowOffset" width="0.0" height="0.0"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,6 +96,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="WIQ-zk-Jdz" secondAttribute="bottom" constant="8" id="6EH-5y-NNS"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KFb-1G-ACG" secondAttribute="trailing" constant="20" symbolic="YES" id="9xx-lW-g4V"/>
                                                         <constraint firstItem="DiZ-O7-Vc3" firstAttribute="top" secondItem="rMG-ca-mIU" secondAttribute="top" constant="8" id="AYi-Sy-Au9"/>
+                                                        <constraint firstItem="nQO-h0-zZY" firstAttribute="leading" secondItem="DiZ-O7-Vc3" secondAttribute="trailing" constant="2" id="FOD-L2-aql"/>
                                                         <constraint firstAttribute="trailing" secondItem="WIQ-zk-Jdz" secondAttribute="trailing" constant="8" id="GTy-B0-ffa"/>
                                                         <constraint firstItem="WIQ-zk-Jdz" firstAttribute="leading" secondItem="rMG-ca-mIU" secondAttribute="leading" constant="8" id="KUG-gh-rt2"/>
                                                         <constraint firstItem="DiZ-O7-Vc3" firstAttribute="leading" secondItem="rMG-ca-mIU" secondAttribute="leading" id="PUg-bV-cG3"/>
@@ -91,6 +106,7 @@
                                                         <constraint firstItem="KFb-1G-ACG" firstAttribute="top" secondItem="DiZ-O7-Vc3" secondAttribute="bottom" constant="7.5" id="gFZ-nQ-Une"/>
                                                         <constraint firstItem="WIQ-zk-Jdz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KFb-1G-ACG" secondAttribute="bottom" constant="5" id="sd2-ec-gKM"/>
                                                         <constraint firstItem="DiZ-O7-Vc3" firstAttribute="width" relation="lessThanOrEqual" secondItem="rMG-ca-mIU" secondAttribute="width" multiplier="0.9" id="xM8-O5-E40"/>
+                                                        <constraint firstItem="nQO-h0-zZY" firstAttribute="bottom" secondItem="DiZ-O7-Vc3" secondAttribute="bottom" constant="-2" id="xdV-g7-3W2"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -103,6 +119,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="flLabel" destination="nQO-h0-zZY" id="wxa-jc-ig7"/>
                                             <outlet property="taglineLabel" destination="KFb-1G-ACG" id="Upl-IO-S2c"/>
                                             <outlet property="wordDefinitionLabel" destination="WIQ-zk-Jdz" id="OdL-wI-tMv"/>
                                             <outlet property="wordTitleLabel" destination="DiZ-O7-Vc3" id="slc-ew-aea"/>

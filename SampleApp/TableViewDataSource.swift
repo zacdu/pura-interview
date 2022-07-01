@@ -43,11 +43,23 @@ extension TableViewDataSource: UITableViewDataSource {
         }
         let cell: WordTableViewCell = tableView.dequeueReusableCell(withIdentifier: "wordCell", for: indexPath) as? WordTableViewCell ?? WordTableViewCell()
         let word = words[indexPath.row]
-        cell.wordTitleLabel.text = "\(word.text):"
+        cell.wordTitleLabel.text = "\(word.text) "
+        cell.flLabel.text = word.fl
         var definitionString = ""
         for (i, def) in word.definitions.enumerated() {
-            let newLineString = (i == word.definitions.endIndex - 1) ? "" : "\n\n" // if we're on the last definition, we don't include newlines, to save space per each cell.
+            let newLineString = (i == word.definitions.endIndex - 1) ? "" : "\n" // if we're on the last definition, we don't include newlines, to save space per each cell.
             definitionString += "\u{2022} \(def).\(newLineString)"
+        }
+        if !word.syns.isEmpty {
+            definitionString += "\n\n"
+            definitionString += "synonyms: "
+            for arr in word.syns {
+                for (i, syn) in arr.enumerated() {
+                    if i <= 5 {
+                        definitionString += "\(syn), "
+                    } 
+                }
+            }
         }
         cell.wordDefinitionLabel.text = definitionString.isEmpty ? "N/A" : definitionString
         var stemString = ""
@@ -56,6 +68,8 @@ extension TableViewDataSource: UITableViewDataSource {
         }
         cell.taglineLabel.text = stemString.isEmpty ? "N/A" : stemString
 
+
+        
         return cell
     }
 }
