@@ -13,7 +13,7 @@ struct WordResponse: Codable {
     let shortdef: [String]
     
     var word: Word {
-        return Word(text: meta.stems.first!, definitions: shortdef)
+        return Word(text: meta.stems.first!, definitions: shortdef, stems: meta.stems)
     }
     
     static func parseData(_ data: Data) -> WordResponse? {

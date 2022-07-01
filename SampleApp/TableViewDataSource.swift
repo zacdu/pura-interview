@@ -44,7 +44,16 @@ extension TableViewDataSource: UITableViewDataSource {
         let cell: WordTableViewCell = tableView.dequeueReusableCell(withIdentifier: "wordCell", for: indexPath) as? WordTableViewCell ?? WordTableViewCell()
         
         cell.wordTitleLabel.text = word.text
-        cell.wordDefinitionLabel.text = word.definitions[indexPath.row]
+        var definitionString = ""
+        for def in word.definitions {
+            definitionString += "- \(def);\n\n"
+        }
+        cell.wordDefinitionLabel.text = definitionString
+        var stemString = ""
+        for stem in word.stems {
+            stemString += " \(stem)"
+        }
+        cell.taglineLabel.text = stemString
         return cell
     }
 }
