@@ -11,12 +11,13 @@ class ViewController: UIViewController {
 
     var dataSource = TableViewDataSource(state: .empty)
     
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: WordSearchTextField!
     @IBOutlet weak var tableView: UITableView!
     
     
     @IBAction func didTapButton() {
-        guard let text = textField.text else {
+        guard let text = textField.text, !text.isEmpty else {
+            textField.shake(duration: 0.08, autoReverse: true, repeatCount: 5)
             return
         }
         
@@ -36,6 +37,7 @@ class ViewController: UIViewController {
                 
             case .failure(let error):
                 self.dataSource.updateState(.empty) {
+                    self.textField.shake(duration: 0.05, autoReverse: true, repeatCount: 3)
                     self.tableView.reloadData()
                 }
                 print("NETWORK ERROR: ", error.localizedDescription)
@@ -57,5 +59,9 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if case TableViewDataSource.State.empty = dataSource.state  {
+            CellAnimation.shared.cellAnimation(cell: cell, duration: 5.0, delay: 1.5, springDampening: 0.8, animationOptions: [.allowUserInteraction, .curveEaseIn], tx: 0, ty: 20, scaleX: 0.7, scaleY: 0.7)
+        }
+    }
 }

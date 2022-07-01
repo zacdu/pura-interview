@@ -32,14 +32,19 @@ class TableViewDataSource: NSObject {
 extension TableViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard case let State.words(words) = state  else {
-            return 0
+            return 1
         }
         return words.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard case let State.words(words) = state  else {
-            return UITableViewCell()
+            let cell: WordTableViewCell = tableView.dequeueReusableCell(withIdentifier: "wordCell", for: indexPath) as? WordTableViewCell ?? WordTableViewCell()
+            cell.wordTitleLabel.text = "Go ahead . . "
+            cell.flLabel.text = "...search a word above"
+            cell.taglineLabel.text = "..it will be totally worth it..."
+            cell.wordDefinitionLabel.text = "... okay, maybe it won't be worth it. I mean, you can literally just ask Siri to get the definition of a word for you."
+            return cell
         }
         let cell: WordTableViewCell = tableView.dequeueReusableCell(withIdentifier: "wordCell", for: indexPath) as? WordTableViewCell ?? WordTableViewCell()
         let word = words[indexPath.row]

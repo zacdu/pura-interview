@@ -25,6 +25,8 @@
 		06A8983A286C165A00F773B5 /* WordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A89839286C165A00F773B5 /* WordResponse.swift */; };
 		06A8983C286C168800F773B5 /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A8983B286C168800F773B5 /* Meta.swift */; };
 		11A8491F286F58FB00BBAB63 /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A8491E286F58FB00BBAB63 /* WordTableViewCell.swift */; };
+		11A84923286F94D700BBAB63 /* CellAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A84922286F94D700BBAB63 /* CellAnimation.swift */; };
+		11A84925286F97B800BBAB63 /* WordSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A84924286F97B800BBAB63 /* WordSearchTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		06A89839286C165A00F773B5 /* WordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordResponse.swift; sourceTree = "<group>"; };
 		06A8983B286C168800F773B5 /* Meta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
 		11A8491E286F58FB00BBAB63 /* WordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
+		11A84922286F94D700BBAB63 /* CellAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellAnimation.swift; sourceTree = "<group>"; };
+		11A84924286F97B800BBAB63 /* WordSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSearchTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,8 @@
 				06A897FF286BEBA500F773B5 /* Main.storyboard */,
 				06A89837286C0FFC00F773B5 /* TableViewDataSource.swift */,
 				11A8491E286F58FB00BBAB63 /* WordTableViewCell.swift */,
+				11A84924286F97B800BBAB63 /* WordSearchTextField.swift */,
+				11A84922286F94D700BBAB63 /* CellAnimation.swift */,
 				062E352E286CC5950072B38E /* API */,
 				062E352F286CC5B10072B38E /* Model */,
 				06A89802286BEBA600F773B5 /* Assets.xcassets */,
@@ -310,7 +316,9 @@
 				06A8982E286BF07B00F773B5 /* Word.swift in Sources */,
 				06A897FC286BEBA500F773B5 /* SceneDelegate.swift in Sources */,
 				06A89832286BF3D200F773B5 /* APIError.swift in Sources */,
+				11A84925286F97B800BBAB63 /* WordSearchTextField.swift in Sources */,
 				06A8982A286BEECA00F773B5 /* Tokens.swift in Sources */,
+				11A84923286F94D700BBAB63 /* CellAnimation.swift in Sources */,
 				06A89838286C0FFC00F773B5 /* TableViewDataSource.swift in Sources */,
 				06A8982C286BF00800F773B5 /* API.swift in Sources */,
 			);
