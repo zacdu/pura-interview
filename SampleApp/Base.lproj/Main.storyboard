@@ -37,8 +37,11 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQN-Df-xo4">
                                 <rect key="frame" x="353.5" y="96" width="45.5" height="34"/>
+                                <color key="tintColor" red="0.23253774639999999" green="0.36784169080000001" blue="0.46866512300000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="magnifyingglass" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="filled" image="magnifyingglass" catalog="system">
+                                    <color key="baseBackgroundColor" red="0.23253774639999999" green="0.36784169080000001" blue="0.46866512300000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="didTapButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="IYp-cq-Em4"/>
                                 </connections>

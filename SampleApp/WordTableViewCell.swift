@@ -36,7 +36,6 @@ class WordTableViewCell: UITableViewCell {
     
     @IBOutlet weak var wordTitleLabel: UILabel!
     @IBOutlet weak var wordDefinitionLabel: UILabel!
-    @IBOutlet weak var taglineLabel: UILabel!
+    @IBOutlet weak var taglineLabel: UILabel! // TODO: Some Words have many "stems", handle for trundication
     @IBOutlet weak var flLabel: UILabel!
-    @IBOutlet weak var wordSynLabel: UILabel!
 }

@@ -28,6 +28,10 @@ class ViewController: UIViewController {
             switch response {
             case .success(let data):
                 guard let r = WordResponse.parseData(data) else {
+                    self.dataSource.updateState(.empty, error: APIError.noData) {
+                        self.textField.shake(duration: 0.02, autoReverse: false, repeatCount: 2)
+                        self.tableView.reloadData()
+                    }
                     return
                 }
                 var words: [Word] = []
@@ -54,7 +58,6 @@ class ViewController: UIViewController {
         
         tableView.dataSource = dataSource
         tableView.delegate = self
-        
         tableView.rowHeight = UITableView.automaticDimension
     }
 

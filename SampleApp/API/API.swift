@@ -11,7 +11,7 @@ class API: NSObject {
     static let shared = API()
     let session = URLSession.shared
     
-    static let baseSearchUrl = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/"
+    static let baseSearchUrl = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/" // Not need for now, as the baseThesaurusUrl call gives us all the properties we are currently using
     static let baseThesaurusUrl = "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/"
     
     func fetchWord(query: String, _ completion: @escaping (Result<Data, APIError>) -> Void) {
