@@ -68,7 +68,7 @@ extension TableViewDataSource {
         if let error = error, error == .tooShort {
             cell.wordTitleLabel.text = "Oops . . "
             cell.flLabel.text = "...that search was too short"
-            cell.taglineLabel.text = "..it's got to be more than a single character..."
+            cell.taglineLabel.text = "..it's got to be more than a two characters..."
             cell.wordDefinitionLabel.text = "... I can understand if that's too restrictive, we've got to have some contraints on you, such as language is to thought...."
         } else if let error = error, error == .emptyQuery {
             cell.wordTitleLabel.text = "Ahh . . "

@@ -19,11 +19,66 @@ class SampleAppTests: XCTestCase {
     }
 
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        // Try entering different query strings into the various calls to ensure failure is happening as expected.
+        let emprtyQuery = ""
+        let tooShortQuery = "u"
+        let validQuery = "umpire"
+        
+        let emptyQueryExpectation = XCTestExpectation(description: #function)
+        let tooShortExpectation = XCTestExpectation(description: #function)
+        let validQueryExpectation = XCTestExpectation(description: #function)
+        
+        API.shared.fetchWord(query: emprtyQuery) { response in
+            // Here, we expect to failure, so guarding against success
+            if case .success = response {
+                XCTFail("Expected to fail with noQuery")
+            }
+            
+            switch response {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                if error != .emptyQuery {
+                    XCTFail()
+                }
+                emptyQueryExpectation.fulfill()
+            }
+        }
+
+        API.shared.fetchWord(query: tooShortQuery) { response in
+            if case .success = response {
+                XCTFail("Expected to fail with tooShort '\(tooShortQuery)'")
+            }
+            
+            switch response {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                if error != .tooShort {
+                    XCTFail()
+                }
+                tooShortExpectation.fulfill()
+            }
+        }
+
+        API.shared.fetchWord(query: validQuery) { response in
+            if case .failure = response {
+                XCTFail("Expected to succeed with validQuery '\(validQuery)'")
+            }
+            
+            switch response {
+            case .success(let data):
+                if data.isEmpty {
+                    XCTFail()
+                }
+                validQueryExpectation.fulfill()
+            case .failure:
+                XCTFail()
+            }
+        }
+        
+        wait(for: [emptyQueryExpectation, tooShortExpectation, validQueryExpectation], timeout: 5.0)
+        
     }
 
     func testPerformanceExample() throws {
