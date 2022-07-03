@@ -35,15 +35,17 @@ class TableViewDataSource: NSObject {
 extension TableViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard case let State.words(words) = state  else {
-            return 1
+            return 1 // Returning `1` for the single cell that we set up in this same case within cellForRowAt:
         }
         return words.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard case let State.words(words) = state  else {
+            // Set up and return single cell for empty-state
             let cell: WordTableViewCell = createCellForEmptyState(tableView: tableView, indexPath: indexPath)
-            cell.animateForEmpty() // Is this the right place to call animate? I tried on willDisplayCell: but was not working there.
+            // I don't quite know how yet, but calling this `animateForEmpty()` here can create a weird bug where the cells in the valid State still have an adjusted .alpha -> I've broken on the only assignment of the .alpha and it doesn't ever hit when we're in a valid State.. assuming it has something to do with cells not quite being dequeued after we show (and animate) the empty State cell.. still investigating, but leaving here for now for the visual purposes.
+            cell.animateForEmpty()
             return cell
         }
         let cell: WordTableViewCell = tableView.dequeueReusableCell(withIdentifier: "wordCell", for: indexPath) as? WordTableViewCell ?? WordTableViewCell()
@@ -59,6 +61,11 @@ extension TableViewDataSource: UITableViewDataSource {
     }
 }
 
+extension ViewController: UITableViewDelegate {
+    // Moved this Delegate extension into this file to keep it with the DataSource. Normally I would change the name of this file in this case, but naming is hard.. I might call this file like .. SearchTableViewController ..? or something like that.
+}
+
+
 extension TableViewDataSource {
     // Used to create the cell shown in certain cases related to a State or specific APIError type
     // TODO: This could maybe be pulled into some other ErrorCellHandling class? Especially as the number of possible APIErrors increases
@@ -67,27 +74,27 @@ extension TableViewDataSource {
         
         if let error = error, error == .tooShort {
             cell.wordTitleLabel.text = "Oops . . "
-            cell.flLabel.text = "...that search was too short"
+            cell.flLabel.text = ". . .that search was too short"
             cell.taglineLabel.text = "..it's got to be more than a two characters..."
             cell.wordDefinitionLabel.text = "... I can understand if that's too restrictive, we've got to have some contraints on you, such as language is to thought...."
         } else if let error = error, error == .emptyQuery {
             cell.wordTitleLabel.text = "Ahh . . "
-            cell.flLabel.text = "...well you've got to enter something"
+            cell.flLabel.text = ". . .well you've got to enter something"
             cell.taglineLabel.text = "..the word must be at least one character..."
             cell.wordDefinitionLabel.text = "... make it something interseting too.. please? I've seen sooo many lame searches, give me something new...."
         } else if let error = error, error == .noData {
             cell.wordTitleLabel.text = "That's not good . . "
-            cell.flLabel.text = "...we've really messed up now"
-            cell.taglineLabel.text = "..there's been an error on getting data..."
+            cell.flLabel.text = ". . .there's been an error"
+            cell.taglineLabel.text = "...you've really bungled this..."
             cell.wordDefinitionLabel.text = "... mayyyybe just try searching another word, if this keeps happening please email us at wedefinitlycare@pura.com...."
         }
         else {
             cell.wordTitleLabel.text = "Go ahead . . "
-            cell.flLabel.text = "...search a word above"
+            cell.flLabel.text = ". . .search a word above"
             cell.taglineLabel.text = "..it will be totally worth it..."
             cell.wordDefinitionLabel.text = "... okay, maybe it won't be worth it. I mean, you can literally just ask Siri to get the definition of a word for you."
         }
         
-        return cell
+        return cell // TODO: In this case, we're returning an default instance of WordTableViewCell, which would show the user the default text we have for each field in the .xib. So would probably want to either 1) Change the defaults in the .xib to be user-facing (but unable to be localized) or 2) Set up a "default" set of text (that we can localize) to assign for this case.
     }
 }

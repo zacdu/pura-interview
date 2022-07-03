@@ -16,6 +16,8 @@ struct Word: Codable {
     let fl: String
     
     func definitionString() -> String {
+        // TODO: Think about seperating `syns` out of this `definitions` string
+        // with this change, we would want to create a new view in the WordTableViewCell to assign the seperated `syns` string
         var definitionString = ""
         for (i, def) in self.definitions.enumerated() {
             let newLineString = (i == self.definitions.endIndex - 1) ? "" : "\n" // if we're on the last definition, we don't include newlines, to save space per each cell.

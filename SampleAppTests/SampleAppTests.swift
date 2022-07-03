@@ -17,26 +17,45 @@ class SampleAppTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // Try entering different query strings into the various calls to ensure failure is happening as expected.
-        let emprtyQuery = ""
-        let tooShortQuery = "u"
-        let validQuery = "umpire"
+    
+    // MARK: Testing Properties
+    // shared between multiple tests
+    // Try entering different query strings into the various calls to ensure test-failure is happening as expected.
+    let emprtyQuery = ""
+    let tooShortQuery = "u"
+    let validQuery = "umpire"
+    
+    func testWordResponse() throws {
+        let validQueryExpectation = XCTestExpectation(description: #function)
         
+        API.shared.fetchWord(query: validQuery) { response in
+            switch response {
+            case .success(let data):
+                if data.isEmpty {
+                    XCTFail("data in case of response.success is empty")
+                }
+                if WordResponse.parseData(data) != nil {
+                    validQueryExpectation.fulfill()
+                } else {
+                    XCTFail("data was not nil, but did not result in a valid WordResponse")
+                }
+            case .failure:
+                XCTFail()
+            }
+        }
+        
+        wait(for: [validQueryExpectation], timeout: 3.0)
+    }
+
+    func testAPIQuery() throws {
         let emptyQueryExpectation = XCTestExpectation(description: #function)
         let tooShortExpectation = XCTestExpectation(description: #function)
         let validQueryExpectation = XCTestExpectation(description: #function)
         
         API.shared.fetchWord(query: emprtyQuery) { response in
-            // Here, we expect to failure, so guarding against success
-            if case .success = response {
-                XCTFail("Expected to fail with noQuery")
-            }
-            
             switch response {
             case .success:
-                XCTFail()
+                XCTFail("Expected to fail with noQuery")
             case .failure(let error):
                 if error != .emptyQuery {
                     XCTFail()
@@ -46,13 +65,9 @@ class SampleAppTests: XCTestCase {
         }
 
         API.shared.fetchWord(query: tooShortQuery) { response in
-            if case .success = response {
-                XCTFail("Expected to fail with tooShort '\(tooShortQuery)'")
-            }
-            
             switch response {
             case .success:
-                XCTFail()
+                XCTFail("Expected to fail with tooShort '\(self.tooShortQuery)'")
             case .failure(let error):
                 if error != .tooShort {
                     XCTFail()
@@ -62,14 +77,10 @@ class SampleAppTests: XCTestCase {
         }
 
         API.shared.fetchWord(query: validQuery) { response in
-            if case .failure = response {
-                XCTFail("Expected to succeed with validQuery '\(validQuery)'")
-            }
-            
             switch response {
             case .success(let data):
                 if data.isEmpty {
-                    XCTFail()
+                    XCTFail("Expected to succeed with validQuery '\(self.validQuery)'")
                 }
                 validQueryExpectation.fulfill()
             case .failure:

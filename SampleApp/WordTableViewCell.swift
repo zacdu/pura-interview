@@ -16,7 +16,7 @@ class WordTableViewCell: UITableViewCell {
         taglineLabel.alpha = 0
         flLabel.alpha = 0
         
-        let endAlpha = 0.70
+        let endAlpha = 0.65
         let options: UIView.AnimationOptions = [.curveEaseIn]
         // use UIView.animate to animate to final state
         UIView.animate(withDuration: 2, delay: 0, options: options, animations: {
@@ -36,6 +36,6 @@ class WordTableViewCell: UITableViewCell {
     
     @IBOutlet weak var wordTitleLabel: UILabel!
     @IBOutlet weak var wordDefinitionLabel: UILabel!
-    @IBOutlet weak var taglineLabel: UILabel! // TODO: Some Words have many "stems", handle for trundication
+    @IBOutlet weak var taglineLabel: UILabel! // TODO: Some Words have many "stems", handle for trundication gracefully
     @IBOutlet weak var flLabel: UILabel!
 }
